@@ -20,8 +20,8 @@ class DoublyLinkedList {
         // Add node of val to head of linked list
         let newNode = new DoublyLinkedNode(val);
 
-        if (this.length >= 0) {
-            this.head.previous = newNode;
+        if (this.length >= 1) {
+            this.head.prev = newNode;
             newNode.next = this.head;
             this.head = newNode;
         } else {
@@ -36,7 +36,22 @@ class DoublyLinkedList {
 
     addToTail(val) {
         // Add node of val to tail of linked list
+        const node = new DoublyLinkedNode(val);
 
+        if (this.length === 0) {
+            this.head = node;
+            this.tail = node;
+            this.length++;
+            return;
+        }
+        let curr = this.head;
+        while (curr.next) {
+            curr = curr.next
+        }
+        curr.next = node;
+        node.prev = curr;
+        this.tail = node;
+        this.length++;
         // Your code here
 
         // Write your hypothesis on the time complexity of this method here
