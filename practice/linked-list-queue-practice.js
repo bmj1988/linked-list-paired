@@ -115,16 +115,13 @@ class SinglyLinkedList {
         // Your code here
         const reversed = new SinglyLinkedList();
         let curr = this.head
-        while (curr.next) {
-
-            reversed.addToHead(curr);
+        while (curr) {
+            let last = reversed.head
+            reversed.addToHead(curr.value);
             curr = curr.next;
-
-            if (reversed.length === 1)
-            reversed.head.next = null
-            } else {
-
-            }
+            reversed.head.next = last
+        }
+        return reversed
 
 
         // for (let i = this.length - 1; i >= 0; i--) {
@@ -132,7 +129,6 @@ class SinglyLinkedList {
         //     if (reversed.length === 0)
         //     reversed.addToHead(last);
         //}
-        Write your hypothesis on the time complexity of this method here
     }
 
     reverseInPlace() {
